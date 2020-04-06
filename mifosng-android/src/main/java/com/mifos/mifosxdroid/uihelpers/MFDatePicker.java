@@ -27,7 +27,6 @@ public class MFDatePicker extends DialogFragment implements DatePickerDialog.OnD
     static String dateSet;
     static Calendar calendar;
 
-
     static {
         calendar = Calendar.getInstance();
         dateSet = DateFormat.format("dd-MM-yyyy", calendar.getTime()).toString();

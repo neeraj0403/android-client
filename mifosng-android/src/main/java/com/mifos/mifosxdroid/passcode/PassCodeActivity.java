@@ -40,6 +40,4 @@ public class PassCodeActivity extends MifosPassCodeActivity {
         return EncryptionUtil.ANDROID_CLIENT;
     }
 
-
-
 }

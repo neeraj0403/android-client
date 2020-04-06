@@ -19,8 +19,7 @@ import com.raizlabs.android.dbflow.annotation.Table;
  */
 @Table(database = MifosDatabase.class)
 @ModelContainer
-public class
-        CenterPayload extends MifosBaseModel implements Parcelable {
+public class CenterPayload extends MifosBaseModel implements Parcelable {
 
     @PrimaryKey(autoincrement = true)
     transient int id;

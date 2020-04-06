@@ -5,9 +5,7 @@
 
 package com.mifos.mifosxdroid.online.clientidentifiers;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -180,21 +178,12 @@ public class ClientIdentifiersFragment extends MifosBaseFragment implements
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.menu_remove_identifier:
-                            new AlertDialog.Builder(getActivity(), R.style.MaterialAlertDialogStyle)
-                                .setMessage(R.string.confirm_delete_identifiers)
-                             .setPositiveButton(R.string.dialog_action_delete,
-                                     new DialogInterface.OnClickListener() {
-                                     public void onClick(DialogInterface dialog, int whichButton) {
-                                         mClientIdentifiersPresenter.
-                                                 deleteIdentifier(clientId, identifiers.
-                                                     get(position).getId(), position);
-                                     }
-                                 })
-                             .setNegativeButton(R.string.cancel, null).show();
+                        mClientIdentifiersPresenter.deleteIdentifier(clientId,
+                                identifiers.get(position).getId(), position);
                         break;
                     case R.id.menu_identifier_documents:
-                        DocumentListFragment documentListFragment = DocumentListFragment
-                                .newInstance(
+                        DocumentListFragment documentListFragment =
+                                DocumentListFragment.newInstance(
                                         Constants.ENTITY_TYPE_CLIENT_IDENTIFIERS,
                                         identifiers.get(position).getId());
                         FragmentTransaction fragmentTransaction =
@@ -214,7 +203,7 @@ public class ClientIdentifiersFragment extends MifosBaseFragment implements
     }
 
     @Override
-    public void identifierDeletedSuccessfully(final int position) {
+    public void identifierDeletedSuccessfully(int position) {
         Toast.makeText(getActivity(), R.string.identifier_deleted_successfully,
                 Toast.LENGTH_SHORT).show();
         identifiers.remove(position);

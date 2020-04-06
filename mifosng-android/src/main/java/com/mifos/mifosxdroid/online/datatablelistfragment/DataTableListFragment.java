@@ -6,8 +6,6 @@
 package com.mifos.mifosxdroid.online.datatablelistfragment;
 
 
-
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -19,7 +17,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -226,7 +223,7 @@ public class DataTableListFragment extends Fragment
         listFormWidgets.add(formWidgets);
     }
 
-    private void addSaveButton()  {
+    private void addSaveButton() {
         Button bt_processForm = new Button(getActivity());
         bt_processForm.setLayoutParams(FormWidget.defaultLayoutParams);
         bt_processForm.setText(getString(R.string.save));
@@ -236,7 +233,6 @@ public class DataTableListFragment extends Fragment
         bt_processForm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hideKeyboard(getContext(), v);
                 try {
                     onSaveActionRequested();
                 } catch (RequiredFieldException e) {
@@ -245,12 +241,7 @@ public class DataTableListFragment extends Fragment
             }
         });
     }
-    public void hideKeyboard(Context context, View view) {
-        InputMethodManager inputManager = (InputMethodManager) getActivity()
-                .getSystemService(context.INPUT_METHOD_SERVICE);
-        inputManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager
-                .RESULT_UNCHANGED_SHOWN);
-    }
+
     public void onSaveActionRequested() throws RequiredFieldException {
 
         dataTablePayloadElements = new ArrayList<>();
